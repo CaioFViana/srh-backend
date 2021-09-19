@@ -5,6 +5,8 @@ import com.srh.api.model.*;
 import com.srh.api.repository.*;
 import com.srh.api.utils.BcriptyUtil;
 import com.srh.api.utils.PasswordUtil;
+
+import org.h2.engine.UserBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,9 +50,82 @@ public class DbSeeder {
         return true;
     }
 
-    private void createTestProject() {
-        
 
+
+    private void createTestProject() {
+        Tag musical = TagBuilder.aTag()
+            .withId(1)
+            .withName("Musical")
+            .build();
+        Tag tecnologia = TagBuilder.aTag()
+            .withId(2)
+            .withName("Tecnologia")
+            .build();
+        Tag lazer = TagBuilder.aTag()
+            .withId(3)
+            .withName("Lazer")
+            .build();
+        Tag precoAlto = TagBuilder.aTag()
+            .withId(4)
+            .withName("Preço Alto")
+            .build();
+        Tag grande = TagBuilder.aTag()
+            .withId(5)
+            .withName("Grande")
+            .build();
+        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
+        
+        Item celular = ItemBuilder.anItem()
+            .withId(1)
+            .withName("Celular")
+            .withTags(List.of(tecnologia,lazer,precoAlto))
+            .build();
+        Item guitarra = ItemBuilder.anItem()
+            .withId(2)
+            .withName("Guitarra")
+            .withTags(List.of(musical,lazer,precoAlto,grande))
+            .build();
+        Item cadeira = ItemBuilder.anItem()
+            .withId(3)
+            .withName("Cadeira")
+            .withTags(List.of(precoAlto,grande))
+            .build();
+        Item bateria = ItemBuilder.anItem()
+            .withId(4)
+            .withName("Bateria")
+            .withTags(List.of(musical,lazer,precoAlto,grande))
+            .build();
+        List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
+
+        Evaluator alberto = EvaluatorBuilder.anEvaluator()
+            .withId(1)
+            .withName("Alberto").withEmail("Alberto@alberto.com")
+            .withPassword(BcriptyUtil.encripty("123456"))
+            .build();
+        Evaluator bianca = EvaluatorBuilder.anEvaluator()
+            .withId(1)
+            .withName("Bianca").withEmail("Bianca@bianca.com")
+            .withPassword(BcriptyUtil.encripty("123456"))
+            .build();
+        Evaluator carlos = EvaluatorBuilder.anEvaluator()
+            .withId(1)
+            .withName("Carlos").withEmail("Carlos@carlos.com")
+            .withPassword(BcriptyUtil.encripty("123456"))
+            .build();
+        Evaluator daniele = EvaluatorBuilder.anEvaluator()
+            .withId(1)
+            .withName("Daniele").withEmail("Daniele@daniele.com")
+            .withPassword(BcriptyUtil.encripty("123456"))
+            .build();
+        
+        List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
+        
+        Project testProject = ProjectBuilder.aProject()
+            .withDate(LocalDate.now())
+            .withDescription("Test Project for Debugging")
+            .withName("test")
+            .build();
+        projectRepository.save(testProject);
 
     }
 
