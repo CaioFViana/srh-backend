@@ -32,6 +32,19 @@ public class DbSeeder {
     private AdminRepository adminRepository;
 
     @Autowired
+    private TagRepository tagRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private ItemRatingRepository itemRatingRepository;
+
+    @Autowired
+    private EvaluatorRepository evaluatorRepository;
+
+
+    @Autowired
     private ProjectRepository projectRepository;
 
     private Profile adminProfile;
@@ -74,7 +87,8 @@ public class DbSeeder {
             .withName("Grande")
             .build();
         List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
-        
+        tagRepository.saveAll(listTags);
+
         Item celular = ItemBuilder.anItem()
             .withId(1)
             .withName("Celular")
@@ -96,40 +110,123 @@ public class DbSeeder {
             .withTags(List.of(musical,lazer,precoAlto,grande))
             .build();
         List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
-
+        itemRepository.saveAll(listItems);
+        
         Evaluator alberto = EvaluatorBuilder.anEvaluator()
             .withId(1)
             .withName("Alberto").withEmail("Alberto@alberto.com")
-            .withPassword(BcriptyUtil.encripty("123456"))
+            .withLogin("alberto").withPassword(BcriptyUtil.encripty("123456"))
             .build();
         Evaluator bianca = EvaluatorBuilder.anEvaluator()
-            .withId(1)
+            .withId(2)
             .withName("Bianca").withEmail("Bianca@bianca.com")
-            .withPassword(BcriptyUtil.encripty("123456"))
+            .withLogin("bianca").withPassword(BcriptyUtil.encripty("123456"))
             .build();
         Evaluator carlos = EvaluatorBuilder.anEvaluator()
-            .withId(1)
+            .withId(3)
             .withName("Carlos").withEmail("Carlos@carlos.com")
-            .withPassword(BcriptyUtil.encripty("123456"))
+            .withLogin("carlos").withPassword(BcriptyUtil.encripty("123456"))
             .build();
         Evaluator daniele = EvaluatorBuilder.anEvaluator()
-            .withId(1)
+            .withId(4)
             .withName("Daniele").withEmail("Daniele@daniele.com")
-            .withPassword(BcriptyUtil.encripty("123456"))
+            .withLogin("daniele").withPassword(BcriptyUtil.encripty("123456"))
             .build();
         
+        
         List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
+        evaluatorRepository.saveAll(listEvaluators);
+
+        ItemRating albCel = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(4.5)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(alberto).withItem(celular)
+                .build())
+            .build();
+        ItemRating albGui = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(4.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(alberto).withItem(guitarra)
+                .build())
+            .build();
+        ItemRating albCad = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(5.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(alberto).withItem(cadeira)
+                .build())
+            .build();
+        ItemRating biaGui = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(3.5)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(bianca).withItem(guitarra)
+                .build())
+            .build();
+        ItemRating biaCad = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(1.5)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(bianca).withItem(cadeira)
+                .build())
+            .build();
+        ItemRating biaBat = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(4.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(bianca).withItem(cadeira)
+                .build())
+            .build();
+        ItemRating carCel = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(5.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(carlos).withItem(celular)
+                .build())
+            .build();
+        ItemRating carGui = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(3.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(carlos).withItem(guitarra)
+                .build())
+            .build();
+        ItemRating danCad = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(4.0)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(daniele).withItem(cadeira)
+                .build())
+            .build();
+        ItemRating danBat = ItemRatingBuilder.anItemRating()
+            .withDate(LocalDateTime.now())
+            .withScore(2.5)
+            .withId(ItemRatingPKBuilder.anItemRatingPK()
+                .withEvaluator(daniele).withItem(bateria)
+                .build())
+            .build();
+
+        List<ItemRating> listItemRatings = List.of(
+            albCel,albGui,albCad,
+                   biaGui,biaCad,biaBat,
+            carCel,carGui,
+                          danCad,danBat);
+        itemRatingRepository.saveAll(listItemRatings);
         
         Project testProject = ProjectBuilder.aProject()
             .withDate(LocalDate.now())
             .withDescription("Test Project for Debugging")
             .withName("test")
+            .withEvaluators(listEvaluators)
+            //.withItens(listItems)
             .build();
         projectRepository.save(testProject);
 
     }
 
-private void createApiUserAdmin() {
+    private void createApiUserAdmin() {
         List<Profile> profiles = new ArrayList<>();
         profiles.add(adminProfile);
         profiles.add(userProfile);
