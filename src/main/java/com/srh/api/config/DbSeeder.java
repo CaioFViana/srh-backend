@@ -66,11 +66,20 @@ public class DbSeeder {
 
 
     private void createTestProject() {
+        Admin admin = AdminBuilder.anAdmin()
+            .withId(1)
+            .withName("Mr. Admin")
+            .withLogin("adm")
+            .withEmail("admin@admin.com")
+            .withPassword(BcriptyUtil.encripty("123456"))
+            .build();
+        adminRepository.save(admin);
         Project testProject = ProjectBuilder.aProject()
             .withId(1)
             .withDate(LocalDate.now())
             .withDescription("Test Project for Debugging")
             .withName("test")
+            .withAdmin(admin)
             .build();
         projectRepository.save(testProject);
 
@@ -232,18 +241,6 @@ public class DbSeeder {
             carCel,carGui,
                           danCad,danBat);
         itemRatingRepository.saveAll(listItemRatings);
-        
-        /*
-        Project testProject = ProjectBuilder.aProject()
-            .withDate(LocalDate.now())
-            .withDescription("Test Project for Debugging")
-            .withName("test")
-            .withEvaluators(listEvaluators)
-            //.withItens(listItems)
-            .build();
-        projectRepository.save(testProject);
-        */
-
     }
 
     private void createApiUserAdmin() {
