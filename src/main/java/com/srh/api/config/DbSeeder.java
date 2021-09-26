@@ -66,51 +66,70 @@ public class DbSeeder {
 
 
     private void createTestProject() {
-        Tag musical = TagBuilder.aTag()
+        Project testProject = ProjectBuilder.aProject()
             .withId(1)
-            .withName("Musical")
+            .withDate(LocalDate.now())
+            .withDescription("Test Project for Debugging")
+            .withName("test")
             .build();
-        Tag tecnologia = TagBuilder.aTag()
-            .withId(2)
-            .withName("Tecnologia")
-            .build();
-        Tag lazer = TagBuilder.aTag()
-            .withId(3)
-            .withName("Lazer")
-            .build();
-        Tag precoAlto = TagBuilder.aTag()
-            .withId(4)
-            .withName("Preço Alto")
-            .build();
-        Tag grande = TagBuilder.aTag()
-            .withId(5)
-            .withName("Grande")
-            .build();
-        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
-        tagRepository.saveAll(listTags);
+        projectRepository.save(testProject);
 
         Item celular = ItemBuilder.anItem()
             .withId(1)
             .withName("Celular")
-            .withTags(List.of(tecnologia,lazer,precoAlto))
+            .withDescription("Um celular")
+            .withProject(testProject)
             .build();
         Item guitarra = ItemBuilder.anItem()
             .withId(2)
             .withName("Guitarra")
-            .withTags(List.of(musical,lazer,precoAlto,grande))
+            .withDescription("Uma guitarra")
+            .withProject(testProject)
             .build();
         Item cadeira = ItemBuilder.anItem()
             .withId(3)
             .withName("Cadeira")
-            .withTags(List.of(precoAlto,grande))
+            .withDescription("Uma cadeira")
+            .withProject(testProject)
             .build();
         Item bateria = ItemBuilder.anItem()
             .withId(4)
             .withName("Bateria")
-            .withTags(List.of(musical,lazer,precoAlto,grande))
+            .withDescription("Uma bateria")
+            .withProject(testProject)
             .build();
         List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
         itemRepository.saveAll(listItems);
+
+
+        Tag musical = TagBuilder.aTag()
+            .withId(1)
+            .withName("Musical")
+            .withItens(List.of(guitarra,bateria))
+            .build();
+        Tag tecnologia = TagBuilder.aTag()
+            .withId(2)
+            .withName("Tecnologia")
+            .withItens(List.of(celular))
+            .build();
+        Tag lazer = TagBuilder.aTag()
+            .withId(3)
+            .withName("Lazer")
+            .withItens(List.of(celular,guitarra,bateria))
+            .build();
+        Tag precoAlto = TagBuilder.aTag()
+            .withId(4)
+            .withName("Preço Alto")
+            .withItens(listItems) // All of them have
+            .build();
+        Tag grande = TagBuilder.aTag()
+            .withId(5)
+            .withName("Grande")
+            .withItens(List.of(celular,guitarra,bateria))
+            .build();
+        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
+        tagRepository.saveAll(listTags);
+
         
         Evaluator alberto = EvaluatorBuilder.anEvaluator()
             .withId(1)
@@ -133,10 +152,9 @@ public class DbSeeder {
             .withLogin("daniele").withPassword(BcriptyUtil.encripty("123456"))
             .build();
         
-        
         List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
         evaluatorRepository.saveAll(listEvaluators);
-
+        
         ItemRating albCel = ItemRatingBuilder.anItemRating()
             .withDate(LocalDateTime.now())
             .withScore(4.5)
@@ -215,6 +233,7 @@ public class DbSeeder {
                           danCad,danBat);
         itemRatingRepository.saveAll(listItemRatings);
         
+        /*
         Project testProject = ProjectBuilder.aProject()
             .withDate(LocalDate.now())
             .withDescription("Test Project for Debugging")
@@ -223,6 +242,7 @@ public class DbSeeder {
             //.withItens(listItems)
             .build();
         projectRepository.save(testProject);
+        */
 
     }
 
