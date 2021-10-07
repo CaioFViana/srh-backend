@@ -63,8 +63,6 @@ public class DbSeeder {
         return true;
     }
 
-
-
     private void createTestProject() {
         Admin admin = AdminBuilder.anAdmin()
             .withId(1)
@@ -80,8 +78,8 @@ public class DbSeeder {
             .withDescription("Test Project for Debugging")
             .withName("test")
             .withAdmin(admin)
+            .withLastMatrixId(0)
             .build();
-        projectRepository.save(testProject);
 
         Item celular = ItemBuilder.anItem()
             .withId(1)
@@ -107,9 +105,6 @@ public class DbSeeder {
             .withDescription("Uma bateria")
             .withProject(testProject)
             .build();
-        List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
-        itemRepository.saveAll(listItems);
-
 
         Tag musical = TagBuilder.aTag()
             .withId(1)
@@ -129,16 +124,13 @@ public class DbSeeder {
         Tag precoAlto = TagBuilder.aTag()
             .withId(4)
             .withName("Preço Alto")
-            .withItens(listItems) // All of them have
+            .withItens(List.of(celular,guitarra,cadeira,bateria))
             .build();
         Tag grande = TagBuilder.aTag()
             .withId(5)
             .withName("Grande")
             .withItens(List.of(celular,guitarra,bateria))
             .build();
-        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
-        tagRepository.saveAll(listTags);
-
         
         Evaluator alberto = EvaluatorBuilder.anEvaluator()
             .withId(1)
@@ -154,15 +146,13 @@ public class DbSeeder {
             .withId(3)
             .withName("Carlos").withEmail("Carlos@carlos.com")
             .withLogin("carlos").withPassword(BcriptyUtil.encripty("123456"))
+            
             .build();
         Evaluator daniele = EvaluatorBuilder.anEvaluator()
             .withId(4)
             .withName("Daniele").withEmail("Daniele@daniele.com")
             .withLogin("daniele").withPassword(BcriptyUtil.encripty("123456"))
             .build();
-        
-        List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
-        evaluatorRepository.saveAll(listEvaluators);
         
         ItemRating albCel = ItemRatingBuilder.anItemRating()
             .withDate(LocalDateTime.now())
@@ -235,12 +225,28 @@ public class DbSeeder {
                 .build())
             .build();
 
+        projectRepository.save(testProject);
+
+        List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
+        for(Evaluator ev : listEvaluators){
+            ev.setProjects(List.of(testProject));
+        }
+        evaluatorRepository.saveAll(listEvaluators);
+
+        List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
+        itemRepository.saveAll(listItems);
+
+        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
+        tagRepository.saveAll(listTags);
+
         List<ItemRating> listItemRatings = List.of(
             albCel,albGui,albCad,
                    biaGui,biaCad,biaBat,
             carCel,carGui,
                           danCad,danBat);
         itemRatingRepository.saveAll(listItemRatings);
+
+
     }
 
     private void createApiUserAdmin() {
