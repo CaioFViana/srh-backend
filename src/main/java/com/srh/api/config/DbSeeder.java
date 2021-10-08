@@ -129,7 +129,7 @@ public class DbSeeder {
         Tag grande = TagBuilder.aTag()
             .withId(5)
             .withName("Grande")
-            .withItens(List.of(celular,guitarra,bateria))
+            .withItens(List.of(guitarra,cadeira,bateria))
             .build();
         
         Evaluator alberto = EvaluatorBuilder.anEvaluator()
@@ -193,7 +193,7 @@ public class DbSeeder {
             .withDate(LocalDateTime.now())
             .withScore(4.0)
             .withId(ItemRatingPKBuilder.anItemRatingPK()
-                .withEvaluator(bianca).withItem(cadeira)
+                .withEvaluator(bianca).withItem(bateria)
                 .build())
             .build();
         ItemRating carCel = ItemRatingBuilder.anItemRating()
