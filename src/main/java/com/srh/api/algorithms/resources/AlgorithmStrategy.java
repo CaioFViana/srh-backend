@@ -4,6 +4,7 @@ import com.srh.api.algorithms.strategies.Collaborative;
 import com.srh.api.algorithms.strategies.ContentBased;
 import com.srh.api.algorithms.strategies.MixedHybrid;
 import com.srh.api.algorithms.strategies.WeightedHybrid;
+import com.srh.api.algorithms.strategies.CascateHybrid;
 import com.srh.api.error.exception.InvalidAlgorithmRecommendationException;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class AlgorithmStrategy {
     @Autowired
     private MixedHybrid mixedHybrid;
 
+    @Autowired
+    private CascateHybrid cascateHybrid;
+
     @SneakyThrows
     public RecommendationAlgorithm getAlgorithm(Integer algorithmId) {
         String algorithmValue = String.valueOf(algorithmId);
@@ -35,7 +39,9 @@ public class AlgorithmStrategy {
             case "3":
                 return weightedHybrid;
             case "4":
-                return mixedHybrid;
+                return mixedHybrid;           
+            case "5":
+                return cascateHybrid;
             default:
                 throw new InvalidAlgorithmRecommendationException("Invalid algorithm");
         }
