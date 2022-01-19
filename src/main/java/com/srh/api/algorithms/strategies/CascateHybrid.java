@@ -7,6 +7,7 @@ import com.srh.api.algorithms.resources.basedcontent.EvaluatorProfileMatrix;
 import com.srh.api.algorithms.resources.basedcontent.ItemTagMatrix;
 import com.srh.api.algorithms.resources.basedcontent.SimilarityEvaluatorProfile;
 import com.srh.api.algorithms.resources.utils.BasicBaseMatrix;
+import com.srh.api.algorithms.resources.utils.EvaluatorTagBaseMatrix;
 import com.srh.api.algorithms.resources.utils.RecommendationUtils;
 import com.srh.api.algorithms.resources.utils.RecommendationsByEvaluator;
 import com.srh.api.builder.AlgorithmBuilder;
@@ -42,19 +43,31 @@ public class CascateHybrid implements RecommendationAlgorithm {
 
     @Override
     public List<RecommendationsByEvaluator> calc(RecommendationForm form) {
+        // Passo 1, pegar os dados do projeto e montar matrizes iniciais
         passingScore = form.getPassingScore();
         decimalPrecision = form.getDecimalPrecision();
 
         buildBasicMatrix(form.getProjectId());
         itemTagMatrix.build(primaryMatrix.getItems());
 
+
+        EvaluatorTagBaseMatrix evaluatorTagMatrix = new EvaluatorTagBaseMatrix(); 
+        evaluatorTagMatrix.build(form.getProjectId());
+
+        // Passo 2, Calcular o perfil de todo mundo e reunir em um lugar só.
         for(Evaluator evaluator: primaryMatrix.getEvaluators()) {
             EvaluatorProfileMatrix evaluatorProfileMatrix = mountEvaluatorProfile(evaluator);
-            RecommendationsByEvaluator recommendationsByEvaluator = calculateRecommendationByEvaluator(
-                    evaluatorProfileMatrix, itemTagMatrix, evaluator);
-            recommendationsByEvaluators.add(recommendationsByEvaluator);
+            evaluatorTagMatrix.addProfiles(evaluator, evaluatorProfileMatrix);
+            // matriz retornada por evaluatorProfileMatrix aqui encima é o calculo de profile de TODO MUNDO (profile = perfil = média da content.)
+            // Contém métodos para pegar a fileira do evaluator e o array do perfil dele!
+            // o evaluator-tag Matrix recebe com todo prazer e armazena. 
+            
+            //RecommendationsByEvaluator recommendationsByEvaluator = calculateRecommendationByEvaluator(
+                    //evaluatorProfileMatrix, itemTagMatrix, evaluator);
+            //recommendationsByEvaluators.add(recommendationsByEvaluator);
         }
 
+        evaluatorTagMatrix.dumpContentMatrix();
         recommendationUtils.defineNewMatrixId(form.getProjectId());
         return recommendationsByEvaluators;
     }
@@ -69,6 +82,7 @@ public class CascateHybrid implements RecommendationAlgorithm {
         return evaluatorProfileMatrix;
     }
 
+    //layer 2
     private RecommendationsByEvaluator calculateRecommendationByEvaluator(EvaluatorProfileMatrix evaluatorProfileMatrix, ItemTagMatrix itemTagMatrix, Evaluator evaluator) {
         SimilarityEvaluatorProfile similarityEvaluatorProfile = new SimilarityEvaluatorProfile(evaluatorProfileMatrix);
         SimilarityEvaluatorContent similarityEvaluatorContent = new SimilarityEvaluatorContent(
