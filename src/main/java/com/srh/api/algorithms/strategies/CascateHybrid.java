@@ -75,21 +75,63 @@ public class CascateHybrid implements RecommendationAlgorithm {
             }
             System.out.println("");
         }
-        
         evaluatorTagMatrix.dumpContentMatrix();
-        
-        Double[] debug = evaluatorTagMatrix.getSimilarityArray(primaryMatrix.getEvaluators().get(0),decimalPrecision);
+        Double[] debug = evaluatorTagMatrix.getSimilarityArray(primaryMatrix.getEvaluators().get(1),decimalPrecision);
         for (int j=0; j < debug.length; j++){
             System.out.print(debug[j]+",\t");
         }
         //Checado e passo 1 e 2 estão ok.
+        
         // Passo 3 - Fazer a filtragem colaborativa nisso.
+        // Plano: checar o primary matrix por valores vazios. nao existente estão null lá. mas checa por 0 tb.
+        //      Feito isso, sabemos o produto E o evaluator que precisa
+        //      Pega a similarity row, detecta quem comprou o produto e as notas deles
+        //      Segue o slide, e faz o que é feito lá.
+        //      Finaliza com o save. comando é
+        //RecommendationUtils recUtils = new RecommendationUtils();
+        //recUtils.buildRecommendation(score, startRecommendationTime, algorithmId, item, evaluator, project)
+        
+        for (int i=0; i < primaryMatrix.getRowSize(); i++){
+            for (int j=0; j < primaryMatrix.getColSize(); j++){
+                if(!isNonZero(primaryMatrix.getContent()[i][j])) {
+                    // Precisa estimar nota. trabalha!
+                    Evaluator currentEvaluator = primaryMatrix.getEvaluators().get(i);
+                    Double[] similarityFromEvaluator = evaluatorTagMatrix.getSimilarityArray(currentEvaluator, decimalPrecision);
+                    Double sumOfSimiTimesScore = 0.0;
+                    Double sumOfSimiEvaluator  = 0.0;
+                    for(int k=0; k<primaryMatrix.getRowSize();k++){
+                        // J é constante, pois ele definiu o produto. K vai varrer a coluna para ver quem já comprou ele.
+                        if (isNonZero(primaryMatrix.getContent()[k][j])){
+                            // Comprou o produto! hora do cálculo
+                            sumOfSimiTimesScore += (similarityFromEvaluator[k] * primaryMatrix.getContent()[k][j]);
+                            sumOfSimiEvaluator  +=  similarityFromEvaluator[k];
+                        }
+                    }
+                    // Percorrida as notas. hora de soltar a nota prevista para a recomendação:
+                    Double score = sumOfSimiTimesScore/ sumOfSimiEvaluator;
+                    //DEBUG
+                    System.out.println(score + " - " + i + " " + j);
+                }
+            }
+        }
+        
+        // PRA FECHAR PARTE 3, FALTA CRIAR O VETOR DE RECOMENDATIONS.
 
+
+        // Passo 4
+        // Mas pra voltar pro calc, precisa de ser esse OBJ ai
+        //List<Recommendation> recommendations, depois .add() o retorno do utils do build ai.
+        // VER calculateRecommendationByEvaluator DA COLABORATIVA!!!! É A CHAVE DO FINALE!
 
 
 
         recommendationUtils.defineNewMatrixId(form.getProjectId());
         return recommendationsByEvaluators;
+    }
+
+    private boolean isNonZero(Double value){
+        if(value == null || value == 0.0) return false;
+        else return true;
     }
 
     private void buildBasicMatrix(Integer projectId) {

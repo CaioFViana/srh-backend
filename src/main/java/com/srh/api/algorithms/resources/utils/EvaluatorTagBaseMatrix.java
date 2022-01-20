@@ -57,15 +57,21 @@ public class EvaluatorTagBaseMatrix extends BaseMatrix {
         for(int i =0; i< rowSize; i++){
             cordsList = new ArrayList<>();
             for (int j = 0; j<colSize; j++){
-                if (content[evaIndex][j] == 0.0 || content[i][j] == 0.0) continue;
-                if (content[evaIndex][j] == null || content[i][j] == null) continue;
+                if (!isNonZero(content[evaIndex][j])) continue;
+                if (!isNonZero(content[i][j])) continue;
                 cordsList.add(RecommendationUtils.buildCoordinate(
                     content[evaIndex][j], content[i][j]));
             }
+            //System.out.println(evaIndex + " - " + i + " " + eDistance.calc(cordsList) + " " + MathUtil.calculateSimilarity(eDistance.calc(cordsList)));
             calc[i] = RecommendationUtils.roundValue(MathUtil.calculateSimilarity(eDistance.calc(cordsList)),precision);
         }
 
         return calc;
+    }
+
+    private boolean isNonZero(Double value){
+        if(value == null || value == 0.0) return false;
+        else return true;
     }
 
     //Testing purposes only
