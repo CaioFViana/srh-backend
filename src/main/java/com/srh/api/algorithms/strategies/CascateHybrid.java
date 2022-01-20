@@ -30,6 +30,9 @@ public class CascateHybrid implements RecommendationAlgorithm {
     private BasicBaseMatrix primaryMatrix;
 
     @Autowired
+    private EvaluatorTagBaseMatrix evaluatorTagMatrix;
+
+    @Autowired
     private ItemTagMatrix itemTagMatrix;
 
     @Autowired
@@ -47,11 +50,10 @@ public class CascateHybrid implements RecommendationAlgorithm {
         passingScore = form.getPassingScore();
         decimalPrecision = form.getDecimalPrecision();
 
-        buildBasicMatrix(form.getProjectId());
+        //buildBasicMatrix(form.getProjectId());
+        primaryMatrix.build(form.getProjectId());
         itemTagMatrix.build(primaryMatrix.getItems());
 
-
-        EvaluatorTagBaseMatrix evaluatorTagMatrix = new EvaluatorTagBaseMatrix(); 
         evaluatorTagMatrix.build(form.getProjectId());
 
         // Passo 2, Calcular o perfil de todo mundo e reunir em um lugar só.

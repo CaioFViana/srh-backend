@@ -47,7 +47,7 @@ public class EvaluatorTagBaseMatrix extends BaseMatrix {
     public void dumpContentMatrix(){
         for (int i=0; i < rowSize; i++){
             for (int j=0; j < colSize; j++){
-                System.out.print(content[i][j]+",");
+                System.out.print(content[i][j]+",\t");
             }
             System.out.println("");
         }

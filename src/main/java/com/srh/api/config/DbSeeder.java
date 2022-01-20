@@ -109,27 +109,27 @@ public class DbSeeder {
         Tag musical = TagBuilder.aTag()
             .withId(1)
             .withName("Musical")
-            .withItens(List.of(guitarra,bateria))
+            .withItens(Arrays.asList(guitarra,bateria))
             .build();
         Tag tecnologia = TagBuilder.aTag()
             .withId(2)
             .withName("Tecnologia")
-            .withItens(List.of(celular))
+            .withItens(Arrays.asList(celular))
             .build();
         Tag lazer = TagBuilder.aTag()
             .withId(3)
             .withName("Lazer")
-            .withItens(List.of(celular,guitarra,bateria))
+            .withItens(Arrays.asList(celular,guitarra,bateria))
             .build();
         Tag precoAlto = TagBuilder.aTag()
             .withId(4)
             .withName("Preço Alto")
-            .withItens(List.of(celular,guitarra,cadeira,bateria))
+            .withItens(Arrays.asList(celular,guitarra,cadeira,bateria))
             .build();
         Tag grande = TagBuilder.aTag()
             .withId(5)
             .withName("Grande")
-            .withItens(List.of(guitarra,cadeira,bateria))
+            .withItens(Arrays.asList(guitarra,cadeira,bateria))
             .build();
         
         Evaluator alberto = EvaluatorBuilder.anEvaluator()
@@ -227,19 +227,19 @@ public class DbSeeder {
 
         projectRepository.save(testProject);
 
-        List<Evaluator> listEvaluators = List.of(alberto,bianca,carlos,daniele);
+        List<Evaluator> listEvaluators = Arrays.asList(alberto,bianca,carlos,daniele);
         for(Evaluator ev : listEvaluators){
-            ev.setProjects(List.of(testProject));
+            ev.setProjects(Arrays.asList(testProject));
         }
         evaluatorRepository.saveAll(listEvaluators);
 
-        List<Item> listItems = List.of(celular, guitarra, cadeira, bateria);
+        List<Item> listItems = Arrays.asList(celular, guitarra, cadeira, bateria);
         itemRepository.saveAll(listItems);
 
-        List<Tag> listTags = List.of(musical, tecnologia, lazer, precoAlto, grande);
+        List<Tag> listTags = Arrays.asList(musical, tecnologia, lazer, precoAlto, grande);
         tagRepository.saveAll(listTags);
 
-        List<ItemRating> listItemRatings = List.of(
+        List<ItemRating> listItemRatings = Arrays.asList(
             albCel,albGui,albCad,
                    biaGui,biaCad,biaBat,
             carCel,carGui,
