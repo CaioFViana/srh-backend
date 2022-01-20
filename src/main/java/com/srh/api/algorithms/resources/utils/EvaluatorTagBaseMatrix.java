@@ -1,5 +1,8 @@
 package com.srh.api.algorithms.resources.utils;
 
+import com.srh.api.algorithms.math.Coordinate;
+import com.srh.api.algorithms.math.EuclidianDistance;
+import com.srh.api.algorithms.math.MathUtil;
 import com.srh.api.algorithms.resources.basedcontent.EvaluatorProfileMatrix;
 import com.srh.api.model.*;
 import com.srh.api.service.ItemRatingService;
@@ -9,6 +12,7 @@ import com.srh.api.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -44,6 +48,27 @@ public class EvaluatorTagBaseMatrix extends BaseMatrix {
         }
     }
 
+    public Double[] getSimilarityArray(Evaluator evaluator,Integer precision){
+        Double[] calc = new Double[rowSize];
+        int evaIndex = evaluators.indexOf(evaluator);
+        List<Coordinate> cordsList;
+        EuclidianDistance eDistance = new EuclidianDistance();
+
+        for(int i =0; i< rowSize; i++){
+            cordsList = new ArrayList<>();
+            for (int j = 0; j<colSize; j++){
+                if (content[evaIndex][j] == 0.0 || content[i][j] == 0.0) continue;
+                if (content[evaIndex][j] == null || content[i][j] == null) continue;
+                cordsList.add(RecommendationUtils.buildCoordinate(
+                    content[evaIndex][j], content[i][j]));
+            }
+            calc[i] = RecommendationUtils.roundValue(MathUtil.calculateSimilarity(eDistance.calc(cordsList)),precision);
+        }
+
+        return calc;
+    }
+
+    //Testing purposes only
     public void dumpContentMatrix(){
         for (int i=0; i < rowSize; i++){
             for (int j=0; j < colSize; j++){
@@ -51,7 +76,6 @@ public class EvaluatorTagBaseMatrix extends BaseMatrix {
             }
             System.out.println("");
         }
-        //Testing purposes only
     }
 }
 

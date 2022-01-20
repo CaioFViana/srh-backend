@@ -68,8 +68,26 @@ public class CascateHybrid implements RecommendationAlgorithm {
                     //evaluatorProfileMatrix, itemTagMatrix, evaluator);
             //recommendationsByEvaluators.add(recommendationsByEvaluator);
         }
-
+        //DEBUG
+        for (int i=0; i < primaryMatrix.getRowSize(); i++){
+            for (int j=0; j < primaryMatrix.getColSize(); j++){
+                System.out.print(primaryMatrix.getContent()[i][j]+",\t");
+            }
+            System.out.println("");
+        }
+        
         evaluatorTagMatrix.dumpContentMatrix();
+        
+        Double[] debug = evaluatorTagMatrix.getSimilarityArray(primaryMatrix.getEvaluators().get(0),decimalPrecision);
+        for (int j=0; j < debug.length; j++){
+            System.out.print(debug[j]+",\t");
+        }
+        //Checado e passo 1 e 2 estão ok.
+        // Passo 3 - Fazer a filtragem colaborativa nisso.
+
+
+
+
         recommendationUtils.defineNewMatrixId(form.getProjectId());
         return recommendationsByEvaluators;
     }
@@ -84,7 +102,6 @@ public class CascateHybrid implements RecommendationAlgorithm {
         return evaluatorProfileMatrix;
     }
 
-    //layer 2
     private RecommendationsByEvaluator calculateRecommendationByEvaluator(EvaluatorProfileMatrix evaluatorProfileMatrix, ItemTagMatrix itemTagMatrix, Evaluator evaluator) {
         SimilarityEvaluatorProfile similarityEvaluatorProfile = new SimilarityEvaluatorProfile(evaluatorProfileMatrix);
         SimilarityEvaluatorContent similarityEvaluatorContent = new SimilarityEvaluatorContent(
