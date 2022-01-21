@@ -328,10 +328,17 @@ public class DbSeeder {
                 .withName("Filtragem Híbrida Mista")
                 .withTypeRecommendation(TypeRecommendation.HYBRID)
                 .build();
+        Algorithm algorithm5 = AlgorithmBuilder.anAlgorithm()
+                .withId(5)
+                .withName("Filtragem Híbrida por Combinação Sequencial")
+                .withTypeRecommendation(TypeRecommendation.HYBRID)
+                .build();
+
 
         algorithmRepository.saveAll(Arrays.asList(
                 algorithm1, algorithm2,
-                algorithm3, algorithm4
+                algorithm3, algorithm4,
+                algorithm5
         ));
     }
 }

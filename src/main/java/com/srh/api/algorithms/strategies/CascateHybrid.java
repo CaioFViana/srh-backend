@@ -20,6 +20,8 @@ import com.srh.api.model.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.micrometer.core.instrument.cumulative.CumulativeCounter;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,12 +92,16 @@ public class CascateHybrid implements RecommendationAlgorithm {
         //      Finaliza com o save. comando é
         //RecommendationUtils recUtils = new RecommendationUtils();
         //recUtils.buildRecommendation(score, startRecommendationTime, algorithmId, item, evaluator, project)
-        
+
+        List<Recommendation> lRecommendations;
+
         for (int i=0; i < primaryMatrix.getRowSize(); i++){
+            lRecommendations = new ArrayList<>();
+            Evaluator currentEvaluator = primaryMatrix.getEvaluators().get(i);
             for (int j=0; j < primaryMatrix.getColSize(); j++){
                 if(!isNonZero(primaryMatrix.getContent()[i][j])) {
                     // Precisa estimar nota. trabalha!
-                    Evaluator currentEvaluator = primaryMatrix.getEvaluators().get(i);
+                    startRecommendation = LocalDateTime.now();
                     Double[] similarityFromEvaluator = evaluatorTagMatrix.getSimilarityArray(currentEvaluator, decimalPrecision);
                     Double sumOfSimiTimesScore = 0.0;
                     Double sumOfSimiEvaluator  = 0.0;
@@ -107,30 +113,41 @@ public class CascateHybrid implements RecommendationAlgorithm {
                             sumOfSimiEvaluator  +=  similarityFromEvaluator[k];
                         }
                     }
-                    // Percorrida as notas. hora de soltar a nota prevista para a recomendação:
-                    Double score = sumOfSimiTimesScore/ sumOfSimiEvaluator;
-                    //DEBUG
-                    System.out.println(score + " - " + i + " " + j);
+                    // Percorrida as notas. hora de soltar a nota prevista para a recomendação: 
+                    Double score;
+                    if (sumOfSimiEvaluator == 0.0) 
+                         score = 0.0;
+                    else score = sumOfSimiTimesScore/ sumOfSimiEvaluator;
+
+                    Recommendation reco = recommendationUtils.buildRecommendation(
+                        score, startRecommendation, 5, primaryMatrix.getItems().get(j), currentEvaluator, primaryMatrix.getProject());
+                    CellPosition cellPosition = RecommendationUtils.buildCellPosition(i, j);
+                        //DEBUG
+                    //System.out.println(score + " - " + i + " " + j);
+                    if (reco.getWeight() >= passingScore){
+                        lRecommendations.add(reco);
+                        recommendationsPositions.add(cellPosition);
+                    }
                 }
             }
+            // mesma pessoa ainda.
+
+            // PASSO 4 - Voltar ao padrão do projeto para que as recomendações sejam salvas e retornadas corretamente. 
+            RecommendationsByEvaluator rEvaluator = new RecommendationsByEvaluator();
+            rEvaluator.setEvaluator(currentEvaluator);
+            rEvaluator.setMatrixId(recommendationUtils.getNewMatrixIndex(primaryMatrix.getProject()));
+            rEvaluator.setRecommendations(lRecommendations);
+            
+            recommendationsByEvaluators.add(rEvaluator);
+
         }
-        
-        // PRA FECHAR PARTE 3, FALTA CRIAR O VETOR DE RECOMENDATIONS.
-
-
-        // Passo 4
-        // Mas pra voltar pro calc, precisa de ser esse OBJ ai
-        //List<Recommendation> recommendations, depois .add() o retorno do utils do build ai.
-        // VER calculateRecommendationByEvaluator DA COLABORATIVA!!!! É A CHAVE DO FINALE!
-
-
 
         recommendationUtils.defineNewMatrixId(form.getProjectId());
         return recommendationsByEvaluators;
     }
 
     private boolean isNonZero(Double value){
-        if(value == null || value == 0.0) return false;
+        if(value == null ) return false; //|| value == 0.0) return false;
         else return true;
     }
 
@@ -192,7 +209,7 @@ public class CascateHybrid implements RecommendationAlgorithm {
     private Recommendation buildRecommendation(Double score, Evaluator evaluator, Integer itemColumnIdx,
         SimilarityEvaluatorContent similarityEvaluatorContent) {
         Item item = similarityEvaluatorContent.getItemByIdx(itemColumnIdx);
-        return recommendationUtils.buildRecommendation(score, startRecommendation, 2, item, evaluator,
+        return recommendationUtils.buildRecommendation(score, startRecommendation, 5, item, evaluator,
                 primaryMatrix.getProject());
     }
 
