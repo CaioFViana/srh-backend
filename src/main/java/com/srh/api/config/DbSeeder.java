@@ -63,12 +63,12 @@ public class DbSeeder {
         createMusicDatabase();
 
         //TESTING
-        createTestProject();
+        //createTestProject();
 
         return true;
     }
 
-    private void createMusicDatabase() {
+    public void createMusicDatabase() {
 
         Admin admin = AdminBuilder.anAdmin()
             .withId(1)
@@ -193,68 +193,66 @@ public class DbSeeder {
         Jamaicano
         Forró
         Tecnobrega*/
+        Evaluator eva4 = EvaluatorBuilder.anEvaluator().withId(1).withName("usuario4").withEmail("user4@user.com").withLogin("user4").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva5 = EvaluatorBuilder.anEvaluator().withId(2).withName("usuario5").withEmail("user5@user.com").withLogin("user5").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva6 = EvaluatorBuilder.anEvaluator().withId(3).withName("usuario6").withEmail("user6@user.com").withLogin("user6").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva7 = EvaluatorBuilder.anEvaluator().withId(4).withName("usuario7").withEmail("user7@user.com").withLogin("user7").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva8 = EvaluatorBuilder.anEvaluator().withId(5).withName("usuario8").withEmail("user8@user.com").withLogin("user8").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva9 = EvaluatorBuilder.anEvaluator().withId(6).withName("usuario9").withEmail("user9@user.com").withLogin("user9").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva10 = EvaluatorBuilder.anEvaluator().withId(7).withName("usuario10").withEmail("user10@user.com").withLogin("user10").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva11 = EvaluatorBuilder.anEvaluator().withId(8).withName("usuario11").withEmail("user11@user.com").withLogin("user11").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva12 = EvaluatorBuilder.anEvaluator().withId(9).withName("usuario12").withEmail("user12@user.com").withLogin("user12").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva13 = EvaluatorBuilder.anEvaluator().withId(10).withName("usuario13").withEmail("user13@user.com").withLogin("user13").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva14 = EvaluatorBuilder.anEvaluator().withId(11).withName("usuario14").withEmail("user14@user.com").withLogin("user14").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva15 = EvaluatorBuilder.anEvaluator().withId(12).withName("usuario15").withEmail("user15@user.com").withLogin("user15").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva16 = EvaluatorBuilder.anEvaluator().withId(13).withName("usuario16").withEmail("user16@user.com").withLogin("user16").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva17 = EvaluatorBuilder.anEvaluator().withId(14).withName("usuario17").withEmail("user17@user.com").withLogin("user17").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva18 = EvaluatorBuilder.anEvaluator().withId(15).withName("usuario18").withEmail("user18@user.com").withLogin("user18").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva19 = EvaluatorBuilder.anEvaluator().withId(16).withName("usuario19").withEmail("user19@user.com").withLogin("user19").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva20 = EvaluatorBuilder.anEvaluator().withId(17).withName("usuario20").withEmail("user20@user.com").withLogin("user20").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva21 = EvaluatorBuilder.anEvaluator().withId(18).withName("usuario21").withEmail("user21@user.com").withLogin("user21").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva22 = EvaluatorBuilder.anEvaluator().withId(19).withName("usuario22").withEmail("user22@user.com").withLogin("user22").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva23 = EvaluatorBuilder.anEvaluator().withId(20).withName("usuario23").withEmail("user23@user.com").withLogin("user23").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva25 = EvaluatorBuilder.anEvaluator().withId(21).withName("usuario25").withEmail("user25@user.com").withLogin("user25").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva26 = EvaluatorBuilder.anEvaluator().withId(22).withName("usuario26").withEmail("user26@user.com").withLogin("user26").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva27 = EvaluatorBuilder.anEvaluator().withId(23).withName("usuario27").withEmail("user27@user.com").withLogin("user27").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva28 = EvaluatorBuilder.anEvaluator().withId(24).withName("usuario28").withEmail("user28@user.com").withLogin("user28").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva31 = EvaluatorBuilder.anEvaluator().withId(25).withName("usuario31").withEmail("user31@user.com").withLogin("user31").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva32 = EvaluatorBuilder.anEvaluator().withId(26).withName("usuario32").withEmail("user32@user.com").withLogin("user32").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva33 = EvaluatorBuilder.anEvaluator().withId(27).withName("usuario33").withEmail("user33@user.com").withLogin("user33").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva34 = EvaluatorBuilder.anEvaluator().withId(28).withName("usuario34").withEmail("user34@user.com").withLogin("user34").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva35 = EvaluatorBuilder.anEvaluator().withId(29).withName("usuario35").withEmail("user35@user.com").withLogin("user35").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva36 = EvaluatorBuilder.anEvaluator().withId(30).withName("usuario36").withEmail("user36@user.com").withLogin("user36").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva37 = EvaluatorBuilder.anEvaluator().withId(31).withName("usuario37").withEmail("user37@user.com").withLogin("user37").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva38 = EvaluatorBuilder.anEvaluator().withId(32).withName("usuario38").withEmail("user38@user.com").withLogin("user38").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva39 = EvaluatorBuilder.anEvaluator().withId(33).withName("usuario39").withEmail("user39@user.com").withLogin("user39").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva40 = EvaluatorBuilder.anEvaluator().withId(34).withName("usuario40").withEmail("user40@user.com").withLogin("user40").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva41 = EvaluatorBuilder.anEvaluator().withId(35).withName("usuario41").withEmail("user41@user.com").withLogin("user41").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva42 = EvaluatorBuilder.anEvaluator().withId(36).withName("usuario42").withEmail("user42@user.com").withLogin("user42").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva43 = EvaluatorBuilder.anEvaluator().withId(37).withName("usuario43").withEmail("user43@user.com").withLogin("user43").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva44 = EvaluatorBuilder.anEvaluator().withId(38).withName("usuario44").withEmail("user44@user.com").withLogin("user44").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva45 = EvaluatorBuilder.anEvaluator().withId(39).withName("usuario45").withEmail("user45@user.com").withLogin("user45").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva46 = EvaluatorBuilder.anEvaluator().withId(40).withName("usuario46").withEmail("user46@user.com").withLogin("user46").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva47 = EvaluatorBuilder.anEvaluator().withId(41).withName("usuario47").withEmail("user47@user.com").withLogin("user47").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva48 = EvaluatorBuilder.anEvaluator().withId(42).withName("usuario48").withEmail("user48@user.com").withLogin("user48").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva49 = EvaluatorBuilder.anEvaluator().withId(43).withName("usuario49").withEmail("user49@user.com").withLogin("user49").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva50 = EvaluatorBuilder.anEvaluator().withId(44).withName("usuario50").withEmail("user50@user.com").withLogin("user50").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva51 = EvaluatorBuilder.anEvaluator().withId(45).withName("usuario51").withEmail("user51@user.com").withLogin("user51").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva52 = EvaluatorBuilder.anEvaluator().withId(46).withName("usuario52").withEmail("user52@user.com").withLogin("user52").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva53 = EvaluatorBuilder.anEvaluator().withId(47).withName("usuario53").withEmail("user53@user.com").withLogin("user53").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva54 = EvaluatorBuilder.anEvaluator().withId(48).withName("usuario54").withEmail("user54@user.com").withLogin("user54").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva55 = EvaluatorBuilder.anEvaluator().withId(49).withName("usuario55").withEmail("user55@user.com").withLogin("user55").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva56 = EvaluatorBuilder.anEvaluator().withId(50).withName("usuario56").withEmail("user56@user.com").withLogin("user56").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva57 = EvaluatorBuilder.anEvaluator().withId(51).withName("usuario57").withEmail("user57@user.com").withLogin("user57").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva58 = EvaluatorBuilder.anEvaluator().withId(52).withName("usuario58").withEmail("user58@user.com").withLogin("user58").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva59 = EvaluatorBuilder.anEvaluator().withId(53).withName("usuario59").withEmail("user59@user.com").withLogin("user59").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva60 = EvaluatorBuilder.anEvaluator().withId(54).withName("usuario60").withEmail("user60@user.com").withLogin("user60").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva61 = EvaluatorBuilder.anEvaluator().withId(55).withName("usuario61").withEmail("user61@user.com").withLogin("user61").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva62 = EvaluatorBuilder.anEvaluator().withId(56).withName("usuario62").withEmail("user62@user.com").withLogin("user62").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva63 = EvaluatorBuilder.anEvaluator().withId(57).withName("usuario63").withEmail("user63@user.com").withLogin("user63").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva64 = EvaluatorBuilder.anEvaluator().withId(58).withName("usuario64").withEmail("user64@user.com").withLogin("user64").withPassword(BcriptyUtil.encripty("123456")).build();
+        Evaluator eva65 = EvaluatorBuilder.anEvaluator().withId(59).withName("usuario65").withEmail("user65@user.com").withLogin("user65").withPassword(BcriptyUtil.encripty("123456")).build();
 
-        Evaluator eva4 = EvaluatorBuilder.anEvaluator().withId(4).withName("usuario4").withEmail("user4@user.com").withLogin("user4").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva5 = EvaluatorBuilder.anEvaluator().withId(5).withName("usuario5").withEmail("user5@user.com").withLogin("user5").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva6 = EvaluatorBuilder.anEvaluator().withId(6).withName("usuario6").withEmail("user6@user.com").withLogin("user6").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva7 = EvaluatorBuilder.anEvaluator().withId(7).withName("usuario7").withEmail("user7@user.com").withLogin("user7").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva8 = EvaluatorBuilder.anEvaluator().withId(8).withName("usuario8").withEmail("user8@user.com").withLogin("user8").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva9 = EvaluatorBuilder.anEvaluator().withId(9).withName("usuario9").withEmail("user9@user.com").withLogin("user9").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva10 = EvaluatorBuilder.anEvaluator().withId(10).withName("usuario10").withEmail("user10@user.com").withLogin("user10").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva11 = EvaluatorBuilder.anEvaluator().withId(11).withName("usuario11").withEmail("user11@user.com").withLogin("user11").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva12 = EvaluatorBuilder.anEvaluator().withId(12).withName("usuario12").withEmail("user12@user.com").withLogin("user12").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva13 = EvaluatorBuilder.anEvaluator().withId(13).withName("usuario13").withEmail("user13@user.com").withLogin("user13").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva14 = EvaluatorBuilder.anEvaluator().withId(14).withName("usuario14").withEmail("user14@user.com").withLogin("user14").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva15 = EvaluatorBuilder.anEvaluator().withId(15).withName("usuario15").withEmail("user15@user.com").withLogin("user15").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva16 = EvaluatorBuilder.anEvaluator().withId(16).withName("usuario16").withEmail("user16@user.com").withLogin("user16").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva17 = EvaluatorBuilder.anEvaluator().withId(17).withName("usuario17").withEmail("user17@user.com").withLogin("user17").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva18 = EvaluatorBuilder.anEvaluator().withId(18).withName("usuario18").withEmail("user18@user.com").withLogin("user18").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva19 = EvaluatorBuilder.anEvaluator().withId(19).withName("usuario19").withEmail("user19@user.com").withLogin("user19").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva20 = EvaluatorBuilder.anEvaluator().withId(20).withName("usuario20").withEmail("user20@user.com").withLogin("user20").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva21 = EvaluatorBuilder.anEvaluator().withId(21).withName("usuario21").withEmail("user21@user.com").withLogin("user21").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva22 = EvaluatorBuilder.anEvaluator().withId(22).withName("usuario22").withEmail("user22@user.com").withLogin("user22").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva23 = EvaluatorBuilder.anEvaluator().withId(23).withName("usuario23").withEmail("user23@user.com").withLogin("user23").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva25 = EvaluatorBuilder.anEvaluator().withId(25).withName("usuario25").withEmail("user25@user.com").withLogin("user25").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva26 = EvaluatorBuilder.anEvaluator().withId(26).withName("usuario26").withEmail("user26@user.com").withLogin("user26").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva27 = EvaluatorBuilder.anEvaluator().withId(27).withName("usuario27").withEmail("user27@user.com").withLogin("user27").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva28 = EvaluatorBuilder.anEvaluator().withId(28).withName("usuario28").withEmail("user28@user.com").withLogin("user28").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva31 = EvaluatorBuilder.anEvaluator().withId(31).withName("usuario31").withEmail("user31@user.com").withLogin("user31").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva32 = EvaluatorBuilder.anEvaluator().withId(32).withName("usuario32").withEmail("user32@user.com").withLogin("user32").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva33 = EvaluatorBuilder.anEvaluator().withId(33).withName("usuario33").withEmail("user33@user.com").withLogin("user33").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva34 = EvaluatorBuilder.anEvaluator().withId(34).withName("usuario34").withEmail("user34@user.com").withLogin("user34").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva35 = EvaluatorBuilder.anEvaluator().withId(35).withName("usuario35").withEmail("user35@user.com").withLogin("user35").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva36 = EvaluatorBuilder.anEvaluator().withId(36).withName("usuario36").withEmail("user36@user.com").withLogin("user36").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva37 = EvaluatorBuilder.anEvaluator().withId(37).withName("usuario37").withEmail("user37@user.com").withLogin("user37").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva38 = EvaluatorBuilder.anEvaluator().withId(38).withName("usuario38").withEmail("user38@user.com").withLogin("user38").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva39 = EvaluatorBuilder.anEvaluator().withId(39).withName("usuario39").withEmail("user39@user.com").withLogin("user39").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva40 = EvaluatorBuilder.anEvaluator().withId(40).withName("usuario40").withEmail("user40@user.com").withLogin("user40").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva41 = EvaluatorBuilder.anEvaluator().withId(41).withName("usuario41").withEmail("user41@user.com").withLogin("user41").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva42 = EvaluatorBuilder.anEvaluator().withId(42).withName("usuario42").withEmail("user42@user.com").withLogin("user42").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva43 = EvaluatorBuilder.anEvaluator().withId(43).withName("usuario43").withEmail("user43@user.com").withLogin("user43").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva44 = EvaluatorBuilder.anEvaluator().withId(44).withName("usuario44").withEmail("user44@user.com").withLogin("user44").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva45 = EvaluatorBuilder.anEvaluator().withId(45).withName("usuario45").withEmail("user45@user.com").withLogin("user45").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva46 = EvaluatorBuilder.anEvaluator().withId(46).withName("usuario46").withEmail("user46@user.com").withLogin("user46").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva47 = EvaluatorBuilder.anEvaluator().withId(47).withName("usuario47").withEmail("user47@user.com").withLogin("user47").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva48 = EvaluatorBuilder.anEvaluator().withId(48).withName("usuario48").withEmail("user48@user.com").withLogin("user48").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva49 = EvaluatorBuilder.anEvaluator().withId(49).withName("usuario49").withEmail("user49@user.com").withLogin("user49").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva50 = EvaluatorBuilder.anEvaluator().withId(50).withName("usuario50").withEmail("user50@user.com").withLogin("user50").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva51 = EvaluatorBuilder.anEvaluator().withId(51).withName("usuario51").withEmail("user51@user.com").withLogin("user51").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva52 = EvaluatorBuilder.anEvaluator().withId(52).withName("usuario52").withEmail("user52@user.com").withLogin("user52").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva53 = EvaluatorBuilder.anEvaluator().withId(53).withName("usuario53").withEmail("user53@user.com").withLogin("user53").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva54 = EvaluatorBuilder.anEvaluator().withId(54).withName("usuario54").withEmail("user54@user.com").withLogin("user54").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva55 = EvaluatorBuilder.anEvaluator().withId(55).withName("usuario55").withEmail("user55@user.com").withLogin("user55").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva56 = EvaluatorBuilder.anEvaluator().withId(56).withName("usuario56").withEmail("user56@user.com").withLogin("user56").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva57 = EvaluatorBuilder.anEvaluator().withId(57).withName("usuario57").withEmail("user57@user.com").withLogin("user57").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva58 = EvaluatorBuilder.anEvaluator().withId(58).withName("usuario58").withEmail("user58@user.com").withLogin("user58").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva59 = EvaluatorBuilder.anEvaluator().withId(59).withName("usuario59").withEmail("user59@user.com").withLogin("user59").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva60 = EvaluatorBuilder.anEvaluator().withId(60).withName("usuario60").withEmail("user60@user.com").withLogin("user60").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva61 = EvaluatorBuilder.anEvaluator().withId(61).withName("usuario61").withEmail("user61@user.com").withLogin("user61").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva62 = EvaluatorBuilder.anEvaluator().withId(62).withName("usuario62").withEmail("user62@user.com").withLogin("user62").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva63 = EvaluatorBuilder.anEvaluator().withId(63).withName("usuario63").withEmail("user63@user.com").withLogin("user63").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva64 = EvaluatorBuilder.anEvaluator().withId(64).withName("usuario64").withEmail("user64@user.com").withLogin("user64").withPassword(BcriptyUtil.encripty("123456")).build();
-        Evaluator eva65 = EvaluatorBuilder.anEvaluator().withId(65).withName("usuario65").withEmail("user65@user.com").withLogin("user65").withPassword(BcriptyUtil.encripty("123456")).build();
-        
-        
         ItemRating itemrating0 = ItemRatingBuilder.anItemRating().withDate(LocalDateTime.now()).withScore(5.0).withId(ItemRatingPKBuilder.anItemRatingPK().withEvaluator(eva4).withItem(item1).build()).build();
         ItemRating itemrating1 = ItemRatingBuilder.anItemRating().withDate(LocalDateTime.now()).withScore(1.0).withId(ItemRatingPKBuilder.anItemRatingPK().withEvaluator(eva4).withItem(item2).build()).build();
         ItemRating itemrating2 = ItemRatingBuilder.anItemRating().withDate(LocalDateTime.now()).withScore(5.0).withId(ItemRatingPKBuilder.anItemRatingPK().withEvaluator(eva4).withItem(item7).build()).build();
@@ -551,9 +549,12 @@ public class DbSeeder {
         ItemRating itemrating293 = ItemRatingBuilder.anItemRating().withDate(LocalDateTime.now()).withScore(5.0).withId(ItemRatingPKBuilder.anItemRatingPK().withEvaluator(eva65).withItem(item7).build()).build();
         ItemRating itemrating294 = ItemRatingBuilder.anItemRating().withDate(LocalDateTime.now()).withScore(3.0).withId(ItemRatingPKBuilder.anItemRatingPK().withEvaluator(eva65).withItem(item8).build()).build();
         
+        
         projectRepository.save(testProject);
 
-        List<Evaluator> listEvaluators = Arrays.asList( eva4,  eva5,  eva6,  eva7,  eva8,  eva9,  eva10,  eva11,  eva12,  eva13,  eva14,  eva15,  eva16,  eva17,  eva18,  eva19,  eva20,  eva21,  eva22,  eva23,  eva25,  eva26,  eva27,  eva28,  eva31,  eva32,  eva33,  eva34,  eva35,  eva36,  eva37,  eva38,  eva39,  eva40,  eva41,  eva42,  eva43,  eva44,  eva45,  eva46,  eva47,  eva48,  eva49,  eva50,  eva51,  eva52,  eva53,  eva54,  eva55,  eva56,  eva57,  eva58,  eva59,  eva60,  eva61,  eva62,  eva63,  eva64,  eva65  );
+        List<Evaluator> listEvaluators = Arrays.asList( eva4,  eva5,  eva6,  eva7,  eva8,  eva9,  eva10,  eva11,  eva12,  eva13,  eva14,  eva15,  eva16,  eva17,  eva18,
+            eva19,  eva20,  eva21,  eva22,  eva23,  eva25,  eva26,  eva27,  eva28,  eva31,  eva32,  eva33,  eva34,  eva35,  eva36,  eva37,  eva38,  eva39,  eva40,  eva41,
+            eva42,  eva43,  eva44,  eva45,  eva46,  eva47,  eva48,  eva49,  eva50,  eva51,  eva52,  eva53,  eva54,  eva55,  eva56,  eva57,  eva58,  eva59,  eva60,  eva61,  eva62,  eva63,  eva64,  eva65);
         for(Evaluator ev : listEvaluators){
             ev.setProjects(Arrays.asList(testProject));
         }
@@ -565,7 +566,7 @@ public class DbSeeder {
         List<Tag> listTags = Arrays.asList( tag1,  tag2,  tag3,  tag4,  tag5,  tag6,  tag7,  tag8,  tag9,  tag10,  tag11,  tag12,  tag13,  tag14,  tag15,  tag16,  tag17,  tag18,  tag19,  tag20,  tag21,  tag22,  tag23  );
         tagRepository.saveAll(listTags);
 
-        List<ItemRating> listItemRatings = Arrays.asList( 
+        List<ItemRating> listItemRatings = Arrays.asList(
             itemrating0,  itemrating1,  itemrating2,  itemrating3,  itemrating4,  itemrating5,  itemrating6,  itemrating7,  itemrating8,  itemrating9,  itemrating10,  itemrating11,  itemrating12,  itemrating13,  itemrating14,  itemrating15,  itemrating16,  itemrating17,  itemrating18,  itemrating19,  itemrating20,
             itemrating21,  itemrating22,  itemrating23,  itemrating24,  itemrating25,  itemrating26,  itemrating27,  itemrating28,  itemrating29,  itemrating30,  itemrating31,  itemrating32,  itemrating33,  itemrating34,  itemrating35,  itemrating36,  itemrating37,  itemrating38,  itemrating39,  itemrating40,
             itemrating41,  itemrating42,  itemrating43,  itemrating44,  itemrating45,  itemrating46,  itemrating47,  itemrating48,  itemrating49,  itemrating50,  itemrating51,  itemrating52,  itemrating53,  itemrating54,  itemrating55,  itemrating56,  itemrating57,  itemrating58,  itemrating59,  itemrating60,  
@@ -579,11 +580,10 @@ public class DbSeeder {
             itemrating201,  itemrating202,  itemrating203,  itemrating204,  itemrating205,  itemrating206,  itemrating207,  itemrating208,  itemrating209,  itemrating210,  itemrating211,  itemrating212,  itemrating213,  itemrating214,  itemrating215,  itemrating216,  itemrating217,  itemrating218,  itemrating219,  itemrating220,
             itemrating221,  itemrating222,  itemrating223,  itemrating224,  itemrating225,  itemrating226,  itemrating227,  itemrating228,  itemrating229,  itemrating230,  itemrating231,  itemrating232,  itemrating233,  itemrating234,  itemrating235,  itemrating236,  itemrating237,  itemrating238,  itemrating239,  itemrating240,  
             itemrating241,  itemrating242,  itemrating243,  itemrating244,  itemrating245,  itemrating246,  itemrating247,  itemrating248,  itemrating249,  itemrating250,  itemrating251,  itemrating252,  itemrating253,  itemrating254,  itemrating255,  itemrating256,  itemrating257,  itemrating258,  itemrating259,  itemrating260,
-            itemrating261,  itemrating262,  itemrating263,  itemrating264,  itemrating265,  itemrating266,  itemrating267,  itemrating268,  itemrating269,  itemrating270,  itemrating271,  itemrating272,  itemrating273,  itemrating274,  itemrating275,  itemrating276,  itemrating277,  itemrating278,  itemrating279,  itemrating280,
-            itemrating281,  itemrating282,  itemrating283,  itemrating284,  itemrating285,  itemrating286,  itemrating287,  itemrating288,  itemrating289,  itemrating290,  itemrating291,  itemrating292,  itemrating293,  itemrating294 
+            itemrating261,  itemrating262,  itemrating263,  itemrating264, itemrating265,  itemrating266,  itemrating267,  itemrating268,  itemrating269,  itemrating270,  itemrating271,  itemrating272,  itemrating273,  itemrating274,  itemrating275,  itemrating276,  itemrating277,  itemrating278,  itemrating279,  itemrating280,
+            itemrating281,  itemrating282,  itemrating283,  itemrating284,  itemrating285,  itemrating286,  itemrating287,  itemrating288,  itemrating289,  itemrating290,  itemrating291,  itemrating292,  itemrating293,  itemrating294
         );
         itemRatingRepository.saveAll(listItemRatings);
-
     }
 
     private void createTestProject() {

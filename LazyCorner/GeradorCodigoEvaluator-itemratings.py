@@ -9,9 +9,11 @@ RAWDATA = [[4,5,1,5,4,5,5,5,1,5,1],[5,4,5,5,4,3,4,4,2,4,2],[6,4,5,2,2,1,2,2,5,1,
 
 def generate():
     print("Gerando o necessário para o script\n\n")
+    evaCount = 1 #começa pelo ID 1 ou crasha
     for eva in RAWDATA:
-        print('Evaluator eva' + str(eva[0]) + ' = EvaluatorBuilder.anEvaluator().withId('+ str(eva[0]) +').withName("usuario'+ str(eva[0]) +'").withEmail("user'+ str(eva[0]) +'@user.com").withLogin("user'+ str(eva[0]) +'").withPassword(BcriptyUtil.encripty("123456")).build();')
-    
+        print('Evaluator eva' + str(eva[0]) + ' = EvaluatorBuilder.anEvaluator().withId('+ str(evaCount) +').withName("usuario'+ str(eva[0]) +'").withEmail("user'+ str(eva[0]) +'@user.com").withLogin("user'+ str(eva[0]) +'").withPassword(BcriptyUtil.encripty("123456")).build();')
+        evaCount += 1
+
     print("\n")
     # Resultados devem ser iguais sempre por conta da seed.
     random.seed(365)
